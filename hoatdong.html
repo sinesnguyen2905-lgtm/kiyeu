@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            padding: 20px; 
+            background-color: #fffafb; 
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h2 { 
+            color: #8a0707; /* Đổi màu thành tím đậm phù hợp với 12C2 */
+            text-align: center; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 80px; height: 3px;
+            background: linear-gradient(to right, #f8bbd0, #ff4343, #f8bbd0); /* Màu gradient cho phần dưới tiêu đề */
+            border-radius: 5px;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; }
+
+        .activity-card {
+            display: flex;
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .activity-img { 
+            width: 200px; 
+            object-fit: cover; 
+            background-color: #eee;
+            cursor: zoom-in;
+            transition: opacity 0.3s;
+        }
+
+        .activity-img:hover { opacity: 0.8; }
+
+        .activity-info { padding: 20px; flex: 1; }
+
+        .time { font-weight: 600; color: #f00a0a; font-size: 0.85em; text-transform: uppercase; display: block; margin-bottom: 5px; }
+
+        .title { font-weight: bold; font-size: 1.2em; color: #ff1100; /* Màu tiêu đề phù hợp với lớp 12C2 */ margin-bottom: 8px; }
+
+        details { width: 100%; }
+        summary { list-style: none; color: #fc0606; font-weight: bold; cursor: pointer; font-size: 0.9em; margin-top: 10px; outline: none; display: inline-block; border-bottom: 1px dashed #ad1457; }
+        summary::-webkit-details-marker { display: none; }
+
+        .more-content { margin-top: 10px; padding-top: 10px; border-top: 1px solid #fce7f3; font-size: 0.9em; color: #555; animation: slideDown 0.3s ease-out; }
+
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- CSS CHO PHẦN PHÓNG TO ẢNH --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            animation: zoom 0.3s;
+        }
+
+        @keyframes zoom { from {transform:scale(0.5)} to {transform:scale(1)} }
+
+        @media (max-width: 600px) {
+            .activity-card { flex-direction: column; }
+            .activity-img { width: 100%; height: 180px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>NHẬT KÝ HOẠT ĐỘNG 12C2</h2> <!-- Đổi từ 12C4 thành 12C2 -->
+
+        <!-- Thêm onclick="openModal(this)" vào các thẻ img -->
+        
+        <div class="activity-card">
+            <img src="https://i.postimg.cc/vxFXXT43/IMG-1772974191396-1772974532009.jpg" class="activity-img" alt="Lễ khai giảng" onclick="openModal(this)">
+            <div class="activity-info">
+                <span class="time">📅 Tháng 09/2025</span>
+                <span class="title">Lễ Khai Giảng Cuối Cùng</span>
+                <p class="desc">Cả lớp cùng nhau dự lễ khai giảng năm học mới.</p>
+                <details>
+                    <summary>Xem thêm</summary>
+                    <div class="more-content">Đánh dấu khởi đầu của năm cuối cấp đầy hoài bão. Những tà áo dài trắng bay trong gió cùng với những lời hứa bắt đầu từ đây.</div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="activity-card">
+            <img src="https://i.postimg.cc/svPH6Y9g/IMG-1772974119361-1772974478596.jpg" class="activity-img" alt="Đà Lạt" onclick="openModal(this)">
+            <div class="activity-info">
+                <span class="time">📅 Tháng 03/2026</span>
+                <span class="title">Chuyến tham quan Đà Lạt</span>
+                <p class="desc">Những đêm thức trắng cùng nhau vui chơi.</p>
+                <details>
+                    <summary>Xem thêm</summary>
+                    <div class="more-content">Đà lạt lạnh thật nhưng đi cùng nhau nên cảm thấy thật ấm áp</div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="activity-card">
+            <img src="https://i.postimg.cc/JsqgnNGP/IMG-20251120-202457.jpg" class="activity-img" alt="Tri ân" onclick="openModal(this)">
+            <div class="activity-info">
+                <span class="time">✨ Sắp tới...</span>
+                <span class="title">Lễ Tri Ân Và Trưởng Thành</span>
+                <p class="desc">Ngày chúng ta chính thức tạm biệt mái trường để bay cao, bay xa hơn.</p>
+                <details>
+                    <summary>Xem thêm</summary>
+                    <div class="more-content">Sẽ là những giọt nước mắt chia tay, là những cái ôm thật chặt. Hẹn gặp lại nhé những người bạn thân thương của tôi, mong ai cũng đạt được ước mơ của mình!</div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Đừng quên đoạn mã phóng to ở cuối file -->
+        <div id="imageModal" class="modal" onclick="closeModal()">
+            <img class="modal-content" id="imgFull">
+        </div>
+
+        <script>
+            function openModal(imgElement) {
+                var modal = document.getElementById("imageModal");
+                var modalImg = document.getElementById("imgFull");
+                modal.style.display = "flex";
+                modalImg.src = imgElement.src;
+            }
+
+            function closeModal() {
+                document.getElementById("imageModal").style.display = "none";
+            }
+        </script>
+
+    </div>
+</body>
+</html>

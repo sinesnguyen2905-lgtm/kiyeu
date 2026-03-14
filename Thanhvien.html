@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Thành viên tổ 4</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #d4a373;
+            --bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--bg);
+            padding: 40px 20px;
+            color: var(--primary);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        /* 1. THIẾT KẾ BẢNG TỐI GIẢN */
+        table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 15px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--primary);
+            color: #888;
+        }
+
+        td {
+            padding: 20px 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+
+        tr:hover { background-color: #fafafa; }
+
+        /* Tên thành viên */
+        .name-btn {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .name-btn:hover {
+            color: var(--accent);
+            transform: translateX(10px); /* Hiệu ứng trượt nhẹ khi hover */
+        }
+
+        /* 2. MODAL THÔNG TIN (GLASSMORPHISM) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px); /* Làm mờ nền phía sau */
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 40px;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            animation: modalShow 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        @keyframes modalShow {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+            }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ccc;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover { color: var(--primary); }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-content b {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .modal-desc {
+            margin-top: 25px;
+            line-height: 1.8;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+     <h2>Thanh Vien to 4</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Thành Viên</th>
+                <th>Vị Trí</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>
+                    <span class="name-btn" onclick="openModal('Lê Ngọc Hà Linh', 'Tổ Trưởng', 'Người tổ trưởng mẫu mực, luôn dẫn dắt tổ đi đầu trong mọi phong trào.')">
+                     Lê Ngọc Hà Linh
+                    </span>
+                </td>
+                <td>Tổ Trưởng</td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>
+                    <span class="name-btn" onclick="openModal('Nguyễn Trọng Anh Duy', 'Tổ phó', 'Hòa đồng dễ nói chuyện')">
+                        Nguyễn Trọng Anh Duy
+                    </span>
+                </td>
+                <td>Tổ phó</td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>
+                    <span class="name-btn" onclick="openModal('Nguyễn Hoài Nam', 'Thành Viên', ' hiền lành nhưng luôn hết mình vì bạn bè.')">
+                        Nguyễn Hoài Nam
+                    </span>
+                </td>
+                <td>Thành Viên</td>
+            </tr> 
+            <tr>
+                <td>04</td>
+                <td>
+                    <span class="name-btn" onclick="openModal('Lê Nhật Trung', 'Thành Viên', 'tính cách vui vẻ tích cực ')">
+                        Lê Nhật Trung
+                    </span>
+                </td>
+                <td>Thành Viên</td>
+            </tr>
+            <tr>
+                <td>05</td>
+                <td>
+                    <span class="name-btn" onclick="openModal('Lê Hoàng Vinh', 'Thành Viên', 'Nhiệt tình tốt bụng với mọi người')">
+                        Lê Hoàng Vinh
+                    </span>
+                </td>
+                <td>Thành Viên</td>
+            </tr> 
+            <tr>
+                <td>06</td>
+                <td>
+                    <span class="name-btn" onclick="openModal('Nguyễn Thế Dũng', 'Thành Viên', ' tốt bụng với mọi người')">
+                        Nguyễn Thế Dũng
+                    </span>
+                </td>
+                <td>Thành Viên</td>
+            </tr>
+            <tr>
+                <td>07</td>
+                <td>
+                    <span class="name-btn" onclick="openModal('Đinh Gia Hân', 'Thành Viên', ' tốt bụng với mọi người,hài hước')">
+                        Đinh Gia Hân
+                    </span>
+                </td>
+                <td>Thành Viên</td>
+            </tr> 
+            <tr>
+                <td>08</td>
+                <td>
+                    <span class="name-btn" onclick="openModal('Trịnh Thị Minh Thư', 'Thành Viên', 'có trách nhiệm luôn hoàn thành tốt nhiệm vụ')">
+                        Trịnh Thị Minh Thư
+                    </span>
+                </td>
+                <td>Thành Viên</td>
+            </tr> 
+            <tr>
+                <td>09</td>
+                <td>
+                    <span class="name-btn" onclick="openModal('Đào Thị Kim Nga', 'Thành Viên', 'có trách nhiệm luôn hoàn thành tốt nhiệm vụ')">
+                        Đào Thị Kim Nga
+                    </span>
+                </td>
+                <td>Thành Viên</td>
+            </tr>
+             <tr>
+                <td>10</td>
+                <td>
+                    <span class="name-btn" onclick="openModal('Mai Nguyễn Trúc Linh', 'Thành Viên', 'Hòa đồng tốt bụng với mọi người')">
+                        Mai Nguyễn Trúc Linh
+                    </span>
+                </td>
+                <td>Thành Viên</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="m-name"></h3>
+            <b id="m-role"></b>
+            <div style="width: 30px; height: 2px; background: #eee; margin: 20px auto;"></div>
+            <p class="modal-desc" id="m-desc"></p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(name, role, desc) {
+            document.getElementById('m-name').innerText = name;
+            document.getElementById('m-role').innerText = role;
+            document.getElementById('m-desc').innerText = desc;
+            document.getElementById('infoModal').style.display = 'flex';
+        }function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('infoModal')) {
+                closeModal();
+            }
+        }
+    </script>
+
+</body>
+</html>

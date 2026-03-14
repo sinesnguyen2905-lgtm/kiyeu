@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu Tập Thể 12c2</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@40…0&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #d4a373;
+            --bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--bg);
+            color: var(--primary);
+            line-height: 1.8;
+            padding: 60px 10%;
+            overflow-x: hidden;
+        }
+
+        /* HIỆU ỨNG CHỮ TIÊU ĐỀ */
+        .hero-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .hero-title h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .hero-title p {
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* BỐ CỤC ẢNH VÀ CHỮ NGHỆ THUẬT */
+        .story-block {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 100px;
+        }
+
+        .story-block:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .image-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        .main-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 20px 20px 0px var(--accent); /* Đổ bóng khối màu đặc */
+        }
+
+        .text-wrapper {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .text-wrapper h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .text-wrapper h2::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: -5px;
+            width: 40px; height: 2px;
+            background: var(--accent);
+        }
+
+        .text-wrapper p {
+            font-size: 1rem;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* KHỐI TRÍCH DẪN LỚN */
+        .big-quote {
+            text-align: center;
+            padding: 80px 0;
+            background: #fbfbfb;
+            margin: 50px -15%;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #333;
+        }
+
+        /* HIỆU ỨNG HIỆN RA KHI CUỘN */
+        .reveal {
+animation: revealFade 1.2s ease forwards;
+        }
+
+        @keyframes revealFade {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .story-block, .story-block:nth-child(even) { flex-direction: column; }
+            .hero-title h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-title reveal">
+        <p>Hành trình của chúng ta</p>
+        <h1>Mùa Hạ Năm Ấy</h1>
+    </header>
+
+    <div class="intro-container">
+        
+        <section class="story-block reveal">
+            <div class="image-wrapper">
+                <img src="c:\Users\Admin\Downloads\582719207_1636375824009576_8667555552528509453_n.jpg" class="main-img" alt="Tập thể lớp">
+            </div>
+            <div class="text-wrapper">
+                <h2>Khởi Đầu</h2>
+                <p>
+                    Mọi chuyện bắt đầu vào một buổi sáng mùa thu năm 2025, khi 45 cá tính xa lạ cùng bước vào căn phòng mang tên 12c2. 
+                    Từ những cái nhìn bỡ ngỡ ban đầu, chúng ta đã cùng nhau viết nên những chương đầu tiên của một cuốn sách mang tên "Thanh Xuân".
+                </p>
+            </div>
+        </section>
+
+        <div class="big-quote reveal">
+            "Thanh xuân là một chuyến đi, không quan trọng đích đến, quan trọng là người đồng hành cùng bạn."
+        </div>
+
+        <section class="story-block reveal">
+            <div class="image-wrapper">
+                <img src="c:\Users\Admin\Downloads\z7245348539248_7bfd735d4566cb3a81d8950e63773d6b.jpg" class="main-img" alt="Kỉ niệm">
+            </div>
+            <div class="text-wrapper">
+                <h2>Gắn Kết</h2>
+                <p>
+                    Không chỉ là những bài giảng căng thẳng, lớp mình còn là những lần "trốn tiết" ăn vặt, những buổi tập văn nghệ đổ mồ hôi và những nụ cười giòn giã dưới sân trường phượng vĩ. 
+                    Tất cả đã nhào nặn nên một 12c2 đoàn kết và không thể tách rời.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer style="text-align: center; margin-top: 50px; opacity: 0.5; font-size: 0.8rem;">
+        &mdash; 12c2 Digital Yearbook &mdash;
+    </footer>
+
+</body>
+</html>
